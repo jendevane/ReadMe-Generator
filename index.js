@@ -6,8 +6,8 @@ inquirer
 
     {
         type: "input",
-        name: "Readme",
-        message: "Readme"
+        name: "name",
+        message: "Enter your name"
     },
     {
 
@@ -44,10 +44,7 @@ inquirer
   .then(function(data) {
     
     const filename =
-      data.name
-        .toLowerCase()
-        .split(' ')
-        .join('') + '.md';
+      'README.md';
 
 
 
@@ -79,10 +76,10 @@ ${data.instructions}
 # License
 ${data.license}
 
-# Name
+# Author
 ${data.name}
 
-#github
+# Github
 ${data.githubname}
     `
 }
