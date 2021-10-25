@@ -44,7 +44,7 @@ inquirer
   .then(function(data) {
     
     const filename =
-      'README.md';
+      'ReadMeExample.md';
 
 
 
