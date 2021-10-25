@@ -6,13 +6,13 @@ inquirer
 
     {
         type: "input",
-        name: "name",
-        message: "Please enter your name"
+        name: "Readme",
+        message: "Readme"
     },
     {
 
         type: "input",
-        name: "github name",
+        name: "githubname",
         message: "Please enter your github name"
     },
     {
@@ -42,21 +42,50 @@ inquirer
    
   ])
   .then(function(data) {
-    // Bonus: Generate the name of your user file from their input
+    
     const filename =
       data.name
         .toLowerCase()
         .split(' ')
-        .join('') + '.json';
+        .join('') + '.md';
 
-    fs.generateReadMe(filename, JSON.stringify(data, null, '\t'), function(err) {
+
+
+    const markdown = generateReadMeMarkdown(data);
+
+    fs.writeFile(filename, markdown, function(err) {
       if (err) {
         return console.log(err);
       }
 
-      console.log('Success!');
+      console.log('You have created your own personal Readme!');
     });
   });
+
+function generateReadMeMarkdown(data) {
+
+
+  return `
+
+# **${data.title}**
+
+
+# Description
+${data.description}
+
+# Instructions
+${data.instructions}
+
+# License
+${data.license}
+
+# Name
+${data.name}
+
+#github
+${data.githubname}
+    `
+}
 
 
     
